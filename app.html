@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>OMDb Exercise</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="app.css">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <div class="row">
+                <div class="movie-poster col-lg-9 col-md-12 pr-lg-0">
+                    <img class="w-100" src="https://static.filmin.es/images/media/22878/2/still_0_3_790x398.jpg" alt="madre">
+                </div>
+                <div class="movie-options col-lg-3 col-md-12 pl-lg-0">
+                    <div>
+                        <div>
+                            <button class="btn btn-primary w-100" type="button">
+                                <i class="fas fa-info-circle"></i>
+                                <span>View details</span>
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary w-100" type="button">
+                                <i class="fas fa-edit"></i>
+                                <span>Edit</span>
+                            </button>
+                        </div>
+
+                        <div>
+                            <button class="btn btn-primary w-100" type="button">
+                                <i class="fas fa-trash-alt"></i>
+                                <span>Delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="short-movie-data d-flex flex-wrap">
+            <div class="data-label">
+                <abbr title="Alta Definición">
+                    HD
+                </abbr>
+            </div>
+
+            <div class="data-label">
+                <span class="label-transparent" itemprop="duration">
+                    780 min
+                </span>
+            </div>
+
+            <div class="data-label">
+                <abbr title="General">
+                    General
+                </abbr>
+            </div>
+        </div>
+
+        <div>
+            <h1 itemprop="name">Once Upon a Time... Life</h1>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 intro-section">
+                    <div class="info-item">
+                        <span>Audio y subtitles</span>
+                        <p>Spanish</p>
+                    </div>
+
+                    <div class="info-item">
+                        <span>Director</span>
+                        <p>
+                            Albert Barillé
+                        </p>
+                    </div>
+
+                    <div class="info-item">
+                        <span>Country</span>
+                        <p>France</p>
+                    </div>
+
+                    <div class="info-item">
+                        <span>Release year</span>
+                        <p>1987</p>
+                    </div>
+
+                    <div class="info-item">
+                        <span>Genres</span>
+                        <div class="tag-list d-flex flex-wrap">
+                            <div class="data-label">
+                                <span>Animation</span>
+                            </div>
+                            <div class="data-label">
+                                <span>Family</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" col-lg-6 col-md-8 sinopsis-section">
+                        <div class="info-item">
+                            <span>Plot summary</span>
+                            <p itemprop="description">
+                                The series Once Upon a Time... Life used the same
+                                recurring lead characters as the other Once Upon a Time...
+                                series: the good characters represent the cells that make
+                                up the body's systems and defense mechanisms,
+                                such as red blood cells, white blood cells and
+                                platelets, while the bad characters represent
+                                the viruses and bacteria that threaten to attack
+                                the human body. Every episode of the series featured
+                                a different organ or system within the human body
+                                (like the brain, the heart, the circulatory system, etc.).
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 extras-section">
+                        <div class="info-item">
+                            <i class="fas fa-award"></i>
+                            <span>Awards</span>
+                            <p class="main-award" itemprop="award">
+                                1 7 d'Or Night (1988)
+                            </p>
+                        </div>
+
+                        <div class="info-item">
+                            <i class="fas fa-star"></i>
+                            <span>Rating</span>
+                            <p>8.3/10</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slider-header">
+                <h3 class="slider-title">Direction and cast</h3>
+            </div>
+        </div>
+        <script src="app.js"></script>
+</body>
+
+</html>
