@@ -18,7 +18,7 @@ function requestData(url) {
 function searchMovie(ev){
     let title = ev.target["0"].value;
     let url = baseUrl + apiKey + "&t=" + title;
-    requestData(url).then(showMovie);
+    requestData(url).then(saveMovie);
     ev.preventDefault();
 }
 
@@ -45,19 +45,13 @@ function replaceNullData(strings, ...parts) {
     return checkedMarkup + strings[strings.length - 1];
 }
 
-function saveMovie() {
-    // Test data
-    var movieData = {
-        title: "Bond",
-        genre: "Action"
-    };
-
-    checkMovieExists(movieData.title).then(movieExists => {
+function saveMovie(movie) {
+    checkMovieExists(movie.Title).then(movieExists => {
         if(movieExists) {
             console.log("Cannot add the movie. The movie already exists in the database.");
         } else {
             console.log("Adding movie to the database.");
-            database.ref().child("movies").push(movieData);
+            database.ref().child("movies").push(movie);
         }
     });
 }
@@ -65,7 +59,7 @@ function saveMovie() {
 function checkMovieExists(title) {
     let movieExists = false;
     return database.ref().child("movies")
-        .orderByChild("title")
+        .orderByChild("Title")
         .equalTo(title)
         .once("value")
         .then(snapshot => {
