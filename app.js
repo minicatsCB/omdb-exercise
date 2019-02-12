@@ -10,6 +10,25 @@ function requestData(url) {
     });
 }
 
+function showMovie(movie) {
+    let movieElement = document.getElementById("movie");
+    let movieTemplate = replaceNullData `${createMovieTemplate(movie)}`;
+    movieElement.innerHTML = movieTemplate;
+}
+
+function replaceNullData(strings, ...parts) {
+    var checkedMarkup = "";
+    parts.forEach((part, index) => {
+        if (!part) {
+            part = "data not available";
+        }
+
+        checkedMarkup += strings[index] + part;
+    });
+
+    return checkedMarkup + strings[strings.length - 1];
+}
+
 function initDatabase() {
     var config = {
         apiKey: "yourApiKey",
