@@ -80,7 +80,6 @@ function checkMovieExists(title) {
 
 function getAllMovies() {
     let movies = [];
-    database.ref().child("movies")
     return database.ref().child("movies")
         .once("value")
         .then(snapshot => {
