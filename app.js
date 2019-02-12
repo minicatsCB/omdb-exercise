@@ -9,3 +9,18 @@ function requestData(url) {
         }
     });
 }
+
+function initDatabase() {
+    var config = {
+        apiKey: "yourApiKey",
+        authDomain: "yourAuthDomain",
+        databaseURL: "yourDatabaseURL",
+        projectId: "yourProjectId",
+        storageBucket: "yourStorageBucket",
+        messagingSenderId: "yourMessagingSenderId"
+
+    };
+    firebase.initializeApp(config);
+
+    return firebase.database();
+}
