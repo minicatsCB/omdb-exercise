@@ -24,7 +24,7 @@ function searchMovie(ev){
 
 function showMovie(movie) {
     let movieElement = document.getElementById("movies");
-    let movieTemplate = replaceNullData `${createMovieTemplate(movie.val())}`;
+    let movieTemplate = replaceNullData `${createMovieTemplate(movie.key, movie.val())}`;
     movieElement.insertAdjacentHTML('beforeend', movieTemplate);
 }
 
