@@ -74,6 +74,20 @@ function checkMovieExists(title) {
     });
 }
 
+function getAllMovies() {
+    let movies = [];
+    database.ref().child("movies")
+    return database.ref().child("movies")
+        .once("value")
+        .then(snapshot => {
+            snapshot.forEach((childSnapshot) => {
+                movies.push(childSnapshot);
+            });
+            
+            return movies;
+        });
+}
+
 function initDatabase() {
     var config = {
         apiKey: "yourApiKey",
