@@ -22,10 +22,14 @@ function searchMovie(ev){
     ev.preventDefault();
 }
 
-function showMovie(movie) {
-    let movieElement = document.getElementById("movie");
-    let movieTemplate = replaceNullData `${createMovieTemplate(movie)}`;
-    movieElement.innerHTML = movieTemplate;
+function showAllMovies() {
+    let movieElement = document.getElementById("movies");
+    getAllMovies().then(allMovies => {
+        for(movie of allMovies) {
+            let movieTemplate = replaceNullData `${createMovieTemplate(movie.val())}`;
+            movieElement.insertAdjacentHTML('beforeend', movieTemplate);
+        }
+    });
 }
 
 function replaceNullData(strings, ...parts) {
