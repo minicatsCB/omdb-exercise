@@ -22,14 +22,10 @@ function searchMovie(ev){
     ev.preventDefault();
 }
 
-function showAllMovies() {
+function showMovie(movie) {
     let movieElement = document.getElementById("movies");
-    getAllMovies().then(allMovies => {
-        for(movie of allMovies) {
-            let movieTemplate = replaceNullData `${createMovieTemplate(movie.val())}`;
-            movieElement.insertAdjacentHTML('beforeend', movieTemplate);
-        }
-    });
+    let movieTemplate = replaceNullData `${createMovieTemplate(movie.val())}`;
+    movieElement.insertAdjacentHTML('beforeend', movieTemplate);
 }
 
 function replaceNullData(strings, ...parts) {
@@ -85,6 +81,10 @@ function getAllMovies() {
         });
 }
 
+function addDatabaseListeners() {
+    database.ref().child("movies").on('child_added', showMovie);
+}
+
 function initDatabase() {
     var config = {
         apiKey: "yourApiKey",
@@ -101,3 +101,4 @@ function initDatabase() {
 }
 
 let database = initDatabase();
+addDatabaseListeners();
