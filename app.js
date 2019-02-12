@@ -1,3 +1,8 @@
+const baseUrl = "http://www.omdbapi.com/?apikey=";
+const apiKey = "yourApiKey";
+
+document.getElementById("search-movie-form").addEventListener("submit", searchMovie);
+
 function requestData(url) {
     return fetch(url).then(response => {
         if(response.ok) {
@@ -8,6 +13,13 @@ function requestData(url) {
             return Promise.reject(response.status);
         }
     });
+}
+
+function searchMovie(ev){
+    let title = ev.target["0"].value;
+    let url = baseUrl + apiKey + "&t=" + title;
+    requestData(url).then(showMovie);
+    ev.preventDefault();
 }
 
 function showMovie(movie) {
