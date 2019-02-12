@@ -2,6 +2,7 @@ const baseUrl = "http://www.omdbapi.com/?apikey=";
 const apiKey = "yourApiKey";
 
 document.getElementById("search-movie-form").addEventListener("submit", searchMovie);
+document.getElementById("movies").addEventListener("click", applyActionOnMovie);
 
 function requestData(url) {
     return fetch(url).then(response => {
@@ -13,6 +14,25 @@ function requestData(url) {
             return Promise.reject(response.status);
         }
     });
+}
+
+function applyActionOnMovie(ev) {
+    let action = ev.target.getAttribute("itemprop");
+    let movieKey = ev.target.parentElement.parentElement.dataset.key;
+    switch (action) {
+        case "details":
+            console.log("View movie details:", movieKey);
+            break;
+        case "edit":
+            console.log("Edit movie:", movieKey);
+            break;
+        case "delete":
+            console.log("Delete movie:", movieKey);
+            break;
+        default:
+            console.log("Action no available");
+            break;
+    }
 }
 
 function searchMovie(ev){
