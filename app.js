@@ -28,6 +28,16 @@ function applyActionOnMovie(ev) {
             break;
         case "edit":
             console.log("Edit movie:", movieKey);
+            enableInputsInMovie(movieKey);
+            ev.target.lastElementChild.innerText = "Save changes";
+            ev.target.setAttribute("itemprop", "save");
+            break;
+        case "save":
+            console.log("Save changes in movie: ", movieKey);
+            disableInputsInMovie(movieKey);
+            ev.target.lastElementChild.innerText = "Edit";
+            ev.target.setAttribute("itemprop", "edit");
+            saveChangesInMovie(movieKey);
             break;
         case "delete":
             console.log("Delete movie:", movieKey);
@@ -37,6 +47,52 @@ function applyActionOnMovie(ev) {
             console.log("Action no available");
             break;
     }
+}
+
+function enableInputsInMovie(movieKey) {
+    let movieElement = document.getElementById(movieKey);
+    let inputs = movieElement.getElementsByTagName("input");
+    for (index = 0; index < inputs.length; ++index) {
+        inputs[index].removeAttribute("disabled");
+    }
+}
+
+function disableInputsInMovie(movieKey) {
+    let movieElement = document.getElementById(movieKey);
+
+    let inputs = movieElement.getElementsByTagName("input");
+    for (index = 0; index < inputs.length; ++index) {
+        inputs[index].setAttribute("disabled", "true");
+    }
+}
+
+function saveChangesInMovie(movieKey) {
+    let changedData = getChangedData(movieKey);
+    database.ref().child("movies").child(movieKey).update(changedData);
+}
+
+function getChangedData(movieKey){
+    let data = {
+      "Awards" : "",
+      "Country" : "",
+      "Director" : "",
+      "Genre" : "",
+      "Language" : "",
+      "Plot" : "",
+      "Rated" : "",
+      "Runtime" : "",
+      "Year" : "",
+      "imdbRating" : ""
+    };
+
+    let movieElement = document.getElementById(movieKey);
+    let inputs = movieElement.getElementsByTagName("input");
+    for (index = 0; index < inputs.length; ++index) {
+        let itemProp = inputs[index].getAttribute("itemprop");
+        data[itemProp] = inputs[index].value;
+    }
+
+    return data;
 }
 
 function showDetailsInView(movie) {

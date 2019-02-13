@@ -10,44 +10,44 @@ function createDetailsTemplate (movieValue) {
                     <div class="col-lg-3 col-md-4 intro-section">
                         <div class="info-item">
                             <span>Language</span>
-                            <p>${movieValue.Language}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Language" value="${movieValue.Language}" disabled>
                         </div>
 
                         <div class="info-item">
                             <span>Director</span>
-                            <p>${movieValue.Director}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Director" value="${movieValue.Director}" disabled>
                         </div>
 
                         <div class="info-item">
                             <span>Country</span>
-                            <p>${movieValue.Country}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Country" value="${movieValue.Country}" disabled>
                         </div>
 
                         <div class="info-item">
                             <span>Release year</span>
-                            <p>${movieValue.Released}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Year" value="${movieValue.Released}" disabled>
                         </div>
 
                         <div class="info-item">
                             <span>Genres</span>
-                            <p>${movieValue.Genre}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Genre" value="${movieValue.Genre}" disabled>
                         </div>
 
                         <div class="info-item">
                             <span>Runtime</span>
-                            <p>${movieValue.Runtime}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Runtime" value="${movieValue.Runtime}" disabled>
                         </div>
 
                         <div class="info-item">
                             <span>Rated</span>
-                            <p>${movieValue.Rated}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Rated" value="${movieValue.Rated}" disabled>
                         </div>
                     </div>
 
                     <div class=" col-lg-6 col-md-8 sinopsis-section">
                         <div class="info-item">
                             <span>Plot summary</span>
-                            <p>${movieValue.Plot}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Plot" value="${movieValue.Plot}" disabled>
                         </div>
                     </div>
 
@@ -55,13 +55,13 @@ function createDetailsTemplate (movieValue) {
                         <div class="info-item">
                             <i class="fas fa-award"></i>
                             <span>Awards</span>
-                            <p class="main-award">${movieValue.Awards}</p>
+                            <input type="text" class="form-control-plaintext" itemprop="Awards" value="${movieValue.Awards}" disabled>
                         </div>
 
                         <div class="info-item">
                             <i class="fas fa-star"></i>
                             <span>Rating</span>
-                            <p>${movieValue.imdbRating}/10</p>
+                            <input type="text" class="form-control-plaintext" itemprop="imdbRating" value="${movieValue.imdbRating}" disabled>
                         </div>
                     </div>
                 </div>
