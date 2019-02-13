@@ -47,7 +47,7 @@ function searchMovie(ev){
     ev.preventDefault();
 }
 
-function showMovie(movie) {
+function showMovieInView(movie) {
     let movieElement = document.getElementById("movies");
     let movieTemplate = replaceNullData `${createMovieTemplate(movie.key, movie.val())}`;
     movieElement.insertAdjacentHTML('beforeend', movieTemplate);
@@ -107,7 +107,7 @@ function getAllMovies() {
 }
 
 function addDatabaseListeners() {
-    database.ref().child("movies").on('child_added', showMovie);
+    database.ref().child("movies").on('child_added', showMovieInView);
     database.ref().child("movies").on('child_removed', deleteMovieFromView);
 }
 
