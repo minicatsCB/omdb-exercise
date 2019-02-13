@@ -28,11 +28,16 @@ function applyActionOnMovie(ev) {
             break;
         case "delete":
             console.log("Delete movie:", movieKey);
+            database.ref().child("movies").child(movieKey).remove();
             break;
         default:
             console.log("Action no available");
             break;
     }
+}
+
+function deleteMovieFromView(movie) {
+    document.getElementById(movie.key).remove();
 }
 
 function searchMovie(ev){
@@ -103,6 +108,7 @@ function getAllMovies() {
 
 function addDatabaseListeners() {
     database.ref().child("movies").on('child_added', showMovie);
+    database.ref().child("movies").on('child_removed', deleteMovieFromView);
 }
 
 function initDatabase() {

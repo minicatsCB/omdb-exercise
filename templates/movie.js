@@ -1,6 +1,6 @@
 function createMovieTemplate (movieKey, movieValue) {
     let movieTemplate = `
-        <div class="row">
+        <div id="${movieKey}" class="row">
             <div class="col-lg-3">
                 <div class="row">
                     <div class="movie-poster col-lg-12">
