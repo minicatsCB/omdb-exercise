@@ -21,7 +21,10 @@ function applyActionOnMovie(ev) {
     let movieKey = ev.target.parentElement.parentElement.dataset.key;
     switch (action) {
         case "details":
-            console.log("View movie details:", movieKey);
+            console.log("Toggle movie details:", movieKey);
+            getMovieById(movieKey).then(movie => {
+                showDetailsInView(movie);
+            });
             break;
         case "edit":
             console.log("Edit movie:", movieKey);
@@ -34,6 +37,19 @@ function applyActionOnMovie(ev) {
             console.log("Action no available");
             break;
     }
+}
+
+function showDetailsInView(movie) {
+    let movieElement = document.getElementById(movie.key);
+    if(!movieElement.classList.contains("details-expanded")){
+        movieElement.classList.add("details-expanded");
+        let detailsTemplate = replaceNullData `${createDetailsTemplate(movie.val())}`;
+        movieElement.insertAdjacentHTML('beforeend', detailsTemplate);
+    } else {
+        movieElement.classList.remove("details-expanded");
+        movieElement.lastElementChild.remove();
+    }
+
 }
 
 function deleteMovieFromView(movie) {
@@ -103,6 +119,21 @@ function getAllMovies() {
             });
             
             return movies;
+        });
+}
+
+function getMovieById(movieKey) {
+    let movie;
+    return database.ref().child("movies")
+        .once("value")
+        .then(snapshot => {
+            snapshot.forEach((childSnapshot) => {
+                if(childSnapshot.key === movieKey) {
+                    movie = childSnapshot;
+                }
+            });
+
+            return movie;
         });
 }
 
