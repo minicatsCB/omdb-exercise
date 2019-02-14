@@ -1,4 +1,4 @@
-function createDetailsTemplate (movieValue) {
+function createDetailTemplate (movieValue) {
     let detailsTemplate = `
         <div class="movie-details col-lg-9">
             <div>

@@ -99,7 +99,7 @@ function showDetailsInView(movie) {
     let movieElement = document.getElementById(movie.key);
     if(!movieElement.classList.contains("details-expanded")){
         movieElement.classList.add("details-expanded");
-        let detailsTemplate = replaceNullData `${createDetailsTemplate(movie.val())}`;
+        let detailsTemplate = replaceNullData `${createDetailTemplate(movie.val())}`;
         movieElement.insertAdjacentHTML('beforeend', detailsTemplate);
     } else {
         movieElement.classList.remove("details-expanded");
@@ -121,7 +121,7 @@ function searchMovie(ev){
 
 function showMovieInView(movie) {
     let movieElement = document.getElementById("movies");
-    let movieTemplate = replaceNullData `${createMovieTemplate(movie.key, movie.val())}`;
+    let movieTemplate = replaceNullData `${createMasterTemplate(movie.key, movie.val())}`;
     movieElement.insertAdjacentHTML('beforeend', movieTemplate);
 }
 

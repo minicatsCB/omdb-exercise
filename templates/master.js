@@ -1,4 +1,4 @@
-function createMovieTemplate (movieKey, movieValue) {
+function createMasterTemplate (movieKey, movieValue) {
     let movieTemplate = `
         <div id="${movieKey}" class="row">
             <div class="col-lg-3">
