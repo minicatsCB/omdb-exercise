@@ -142,8 +142,25 @@ function saveMovie(movie) {
         if(movieExists) {
             console.log("Cannot add the movie. The movie already exists in the database.");
         } else {
+            let data = {
+              "Title": "",
+              "Poster": "",
+              "Awards" : "",
+              "Country" : "",
+              "Director" : "",
+              "Genre" : "",
+              "Language" : "",
+              "Plot" : "",
+              "Rated" : "",
+              "Runtime" : "",
+              "Year" : "",
+              "imdbRating" : ""
+            };
+            for (prop in data) {
+                data[prop] = movie[prop];
+            }
             console.log("Adding movie to the database.");
-            database.ref().child("movies").push(movie);
+            database.ref().child("movies").push(data);
         }
     });
 }
