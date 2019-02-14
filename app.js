@@ -79,8 +79,8 @@ function getChangedData(movieKey){
       "Language": "",
       "Plot": "",
       "Rated": "",
+      "Released": "",
       "Runtime": "",
-      "Year": "",
       "imdbRating": ""
     };
 
@@ -152,8 +152,8 @@ function saveMovie(movie) {
               "Language" : "",
               "Plot" : "",
               "Rated" : "",
+              "Released" : "",
               "Runtime" : "",
-              "Year" : "",
               "imdbRating" : ""
             };
             for (prop in data) {

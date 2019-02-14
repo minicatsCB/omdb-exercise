@@ -20,8 +20,8 @@ function createDetailTemplate (movieValue) {
                         </div>
 
                         <div class="info-item">
-                            <span><b>Release year</b></span>
-                            <textarea type="text" class="form-control-plaintext" rows="1" itemprop="Year" disabled="true">${movieValue.Released}</textarea>
+                            <span><b>Released</b></span>
+                            <textarea type="text" class="form-control-plaintext" rows="1" itemprop="Released" disabled="true">${movieValue.Released}</textarea>
                         </div>
 
                         <div class="info-item">
