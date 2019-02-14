@@ -72,23 +72,23 @@ function saveChangesInMovie(movieKey) {
 
 function getChangedData(movieKey){
     let data = {
-      "Awards" : "",
-      "Country" : "",
-      "Director" : "",
-      "Genre" : "",
-      "Language" : "",
-      "Plot" : "",
-      "Rated" : "",
-      "Runtime" : "",
-      "Year" : "",
-      "imdbRating" : ""
+      "Awards": "",
+      "Country": "",
+      "Director": "",
+      "Genre": "",
+      "Language": "",
+      "Plot": "",
+      "Rated": "",
+      "Runtime": "",
+      "Year": "",
+      "imdbRating": ""
     };
 
     let movieElement = document.getElementById(movieKey);
     let inputs = movieElement.getElementsByTagName("textarea");
-    for (index = 0; index < inputs.length; ++index) {
-        let itemProp = inputs[index].getAttribute("itemprop");
-        data[itemProp] = inputs[index].value;
+    for (let i = 0; i < inputs.length; i++) {
+        let itemProp = inputs[i].getAttribute("itemprop");
+        data[itemProp] = inputs[i].value;
     }
     
     return data;
