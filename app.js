@@ -28,15 +28,10 @@ function applyActionOnMovie(ev) {
             break;
         case "edit":
             console.log("Edit movie:", movieKey);
-            enableInputsInMovie(movieKey);
-            ev.target.lastElementChild.innerText = "Save changes";
-            ev.target.setAttribute("itemprop", "save");
+            editMovie(movieKey);
             break;
         case "save":
             console.log("Save changes in movie: ", movieKey);
-            disableInputsInMovie(movieKey);
-            ev.target.lastElementChild.innerText = "Edit";
-            ev.target.setAttribute("itemprop", "edit");
             saveChangesInMovie(movieKey);
             break;
         case "delete":
@@ -47,6 +42,12 @@ function applyActionOnMovie(ev) {
             console.log("Action no available");
             break;
     }
+}
+
+function editMovie(movieKey){
+    enableInputsInMovie(movieKey);
+    ev.target.lastElementChild.innerText = "Save changes";
+    ev.target.setAttribute("itemprop", "save");
 }
 
 function enableInputsInMovie(movieKey) {
@@ -67,6 +68,9 @@ function disableInputsInMovie(movieKey) {
 }
 
 function saveChangesInMovie(movieKey) {
+    disableInputsInMovie(movieKey);
+    ev.target.lastElementChild.innerText = "Edit";
+    ev.target.setAttribute("itemprop", "edit");
     let changedData = getChangedData(movieKey);
     database.ref().child("movies").child(movieKey).update(changedData);
 }
