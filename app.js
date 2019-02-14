@@ -28,11 +28,11 @@ function applyActionOnMovie(ev) {
             break;
         case "edit":
             console.log("Edit movie:", movieKey);
-            editMovie(movieKey);
+            editMovie(ev, movieKey);
             break;
         case "save":
             console.log("Save changes in movie: ", movieKey);
-            saveChangesInMovie(movieKey);
+            saveChangesInMovie(ev, movieKey);
             break;
         case "delete":
             console.log("Delete movie:", movieKey);
@@ -44,7 +44,7 @@ function applyActionOnMovie(ev) {
     }
 }
 
-function editMovie(movieKey){
+function editMovie(ev, movieKey){
     enableInputsInMovie(movieKey);
     ev.target.lastElementChild.innerText = "Save changes";
     ev.target.setAttribute("itemprop", "save");
@@ -52,7 +52,7 @@ function editMovie(movieKey){
 
 function enableInputsInMovie(movieKey) {
     let movieElement = document.getElementById(movieKey);
-    let inputs = movieElement.getElementsByTagName("input");
+    let inputs = movieElement.getElementsByTagName("textarea");
     for (index = 0; index < inputs.length; ++index) {
         inputs[index].removeAttribute("disabled");
     }
@@ -60,14 +60,13 @@ function enableInputsInMovie(movieKey) {
 
 function disableInputsInMovie(movieKey) {
     let movieElement = document.getElementById(movieKey);
-
-    let inputs = movieElement.getElementsByTagName("input");
+    let inputs = movieElement.getElementsByTagName("textarea");
     for (index = 0; index < inputs.length; ++index) {
         inputs[index].setAttribute("disabled", "true");
     }
 }
 
-function saveChangesInMovie(movieKey) {
+function saveChangesInMovie(ev, movieKey) {
     disableInputsInMovie(movieKey);
     ev.target.lastElementChild.innerText = "Edit";
     ev.target.setAttribute("itemprop", "edit");
@@ -90,12 +89,12 @@ function getChangedData(movieKey){
     };
 
     let movieElement = document.getElementById(movieKey);
-    let inputs = movieElement.getElementsByTagName("input");
+    let inputs = movieElement.getElementsByTagName("textarea");
     for (index = 0; index < inputs.length; ++index) {
         let itemProp = inputs[index].getAttribute("itemprop");
         data[itemProp] = inputs[index].value;
     }
-
+    
     return data;
 }
 
