@@ -28,11 +28,23 @@ function applyActionOnMovie(ev) {
             break;
         case "edit":
             console.log("Edit movie:", movieKey);
-            enableInputsInMovie(movieKey);
-            ev.target.lastElementChild.innerText = "Save changes";
-            ev.target.setAttribute("itemprop", "save");
-            ev.target.classList.remove("btn-light");
-            ev.target.classList.add("btn-success");
+            // Lock the toggle details view button while editing
+            let detailsButton = document.querySelector('[itemprop="details"]').setAttribute("disabled", "true");
+            // Open the details view if it isn't already opened
+            getMovieById(movieKey).then(movie => {
+                let movieElement = document.getElementById(movie.key);
+                if(!movieElement.classList.contains("details-expanded")){
+                    movieElement.classList.add("details-expanded");
+                    let detailsTemplate = replaceNullData `${createDetailTemplate(movie.val())}`;
+                    movieElement.insertAdjacentHTML('beforeend', detailsTemplate);
+                }
+
+                enableInputsInMovie(movieKey);
+                ev.target.lastElementChild.innerText = "Save changes";
+                ev.target.setAttribute("itemprop", "save");
+                ev.target.classList.remove("btn-light");
+                ev.target.classList.add("btn-success");
+            });
             break;
         case "save":
             console.log("Save changes in movie: ", movieKey);
@@ -42,6 +54,8 @@ function applyActionOnMovie(ev) {
             saveChangesInMovie(movieKey).then(() => {
                 ev.target.classList.remove("btn-success");
                 ev.target.classList.add("btn-light");
+                // Unlock the toggle details view button after saving the changes
+                document.querySelector('[itemprop="details"]').removeAttribute("disabled");
             });
             break;
         case "delete":
@@ -109,7 +123,6 @@ function showDetailsInView(movie) {
         movieElement.classList.remove("details-expanded");
         movieElement.lastElementChild.remove();
     }
-
 }
 
 function deleteMovieFromView(movie) {
