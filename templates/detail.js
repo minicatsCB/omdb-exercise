@@ -43,7 +43,11 @@ function createDetailTemplate (movieValue) {
                     <div class="col-lg-6 col-md-8 plot-section">
                         <div class="info-item">
                             <span><b>Plot summary</b></span>
-                            <textarea type="text" class="form-control-plaintext" rows="5" itemprop="Plot" disabled="true">${movieValue.Plot}</textarea>
+                            <textarea type="text" class="form-control-plaintext" rows="7" itemprop="Plot" disabled="true">${movieValue.Plot}</textarea>
+                        </div>
+                        <div class="info-item">
+                            <span><b>Cast</b></span>
+                            <textarea type="text" class="form-control-plaintext" rows="3" itemprop="Actors" disabled="true">${movieValue.Actors}</textarea>
                         </div>
                     </div>
 
@@ -59,11 +63,6 @@ function createDetailTemplate (movieValue) {
                             <span><b>Rating</b></span>
                             <textarea type="text" class="form-control-plaintext" rows="1" itemprop="imdbRating" disabled="true">${movieValue.imdbRating}</textarea>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="slider-header">
-                        <h3 class="slider-title">Direction and cast</h3>
                     </div>
                 </div>
             </div>

@@ -91,6 +91,7 @@ function saveChangesInMovie(movieKey) {
 
 function getChangedData(movieKey){
     let data = {
+      "Actors": "",
       "Awards": "",
       "Country": "",
       "Director": "",
@@ -163,6 +164,7 @@ function saveMovie(movie) {
             let data = {
               "Title": "",
               "Poster": "",
+              "Actors": "",
               "Awards" : "",
               "Country" : "",
               "Director" : "",
